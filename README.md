@@ -222,7 +222,7 @@ DELETE cargo;
 Como o nome diz essa parte serve para fazer consultas nas tabelas
 para isso utilizamos o "Select"
 
-### 2.1 SELECT
+### 3.1 SELECT
 Um select básico é :
 ```sql
 SELECT * FROM <nome tabela>; 
@@ -261,13 +261,14 @@ SELECT nome, CH FROM curso
 WHERE CH IS NULL;
 ```
 *obs. **Aqui temos um exemplo de select onde eu quero que a carga horaria seja nula***
-\
+
 ```sql
 SELECT nome, CH FROM CURSO
 WHERE CH IN (24,32); 
 ```
 *obs. **Aqui eu especifico que quero selecionar Cargas Horarias que sejam iguais a 24 ou 32***
-
+\
+\
 Para aprimorar nossos selects temos algumas funções que ajudam na hora de fazer uma seleção, sendo elas:
 - AVG (coluna) – média dos valores de uma coluna;
 -  Count (coluna) – total de linhas selecionadas;
@@ -312,7 +313,7 @@ ORDER BY MAX(salario) DESC;
 *obs. **Aqui estou agrupando por cargo onde o cargo não seja de Presidente ordenando pelo maior salario ate o menor, ou seja, ele irá retornar o cargo e o salario máximo do mesmo***
 \
 \
-Terminando a parte de SELECTs com funções vale destacar que para SELECT's onde exista agrupamento(**GROUP BY**) utilizamos o **HAVING** ao inves de **WHERE**
+Terminando a parte de SELECTs com funções vale destacar que para SELECT's onde exista agrupamento(**GROUP BY**) utilizamos o **HAVING** ao invés de **WHERE**
 \
 \
 Exemplo:
@@ -322,6 +323,57 @@ GROUP BY departamento
 HAVING AVG(salario) > 2000;
 ```
 *obs. **Aqui eu estou fazendo um select que me retorne o departamento e sua media salarial onde a media seja maior que 2000***
+
+####  3.1.1 JOINS
+![enter image description here](https://pics.me.me/thumb_left-join-rightjoin-inner-join-fulouter-join-ingfsp-com-database-60216420.png)
+\
+\
+Uma breve introdução a Join's, a própria palavra nós da breve noção do que essas funções são responsáveis, Join significa "Juntar-se", no caso de banco de dados o Join serve para nada mais que juntar tabelas através de  certas condições. Abaixo está uma imagem que representaria melhor.
+\
+\
+![enter image description here](https://static.imasters.com.br/wp-content/uploads/2013/05/uuu.png)
+
+
+#### 3.1.2 INNER JOIN
+O **INNER JOIN** serve para juntar duas tabelas e mostrar seus valores em comum, ou seja, ele faz uma intersecção de duas tabelas. Para fazermos um INNER JOIN precisamos do nome da tabela que queremos pegar os dados comuns e o campo que irá fazer a interligação entre as tabelas.
+
+```sql 
+SELECT <campos> FROM <tabela a>
+INNER JOIN <tabela b>
+ON b.id = a.id
+```
+Um exemplo seria temos uma tabela de cachorro_dono, uma de cachorro e uma de dono e queremos mostrar o nome do dono e do pet
+\
+\
+**Tabela Cachorro_Dono**
+|id|id_pet| id_dono |
+|--|--|--|
+|  1|  1| 3
+\
+**Tabela Cachorro**
+|id_cachorro| nome|
+|-----------|-----|
+|1|Han
+\
+**Tabela Dono**
+|id_dono| nome|
+|-----------|-----|
+|3|Luke Skywalker
+
+\
+Para podermos então pegar o nome do dono e do pet teremos que juntar as tabelas, para fazer isso utilizamos:
+
+```sql
+SELECT d.nome as Dono, c.nome as Pet FROM cachorro_dono as cd
+INNER JOIN cachorro as c
+ON c.id_cachorro = cd.id_pet
+INNER JOIN dono as d
+ON d.id_dono = cd.id_dono
+```
+Nos retornando os valores:
+| Dono | Pet |
+| -- | --|
+| Luke Skywalker | Totó|
 
 ##  Conclusões
 Este tutorial é com total intuito de aprender e quem sabe ajudar alguém, por hoje é só caros padawans, e que a força esteja ao seu lado
