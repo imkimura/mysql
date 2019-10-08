@@ -19,37 +19,50 @@ Primeiro de tudo temos o SQL é dividido em 5 partes:
 ### **1.1 Insert**
 Um insert básico seria:
 
->INSERT INTO [***nome da tabela***] &nbsp;  ([***colunas da tabela***]) \
->VALUES ([***valores da tabela***])
-
+```sql 
+INSERT INTO <nome da tabela> (<colunas da tabela>)
+VALUES (<valores da tabela>)
+```
 Exemplo:
->INSERT INTO cargo &nbsp; (id_cargo,descricao) \
-	    VALUES (1,'Analista de Sistemas'), \
-		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       (2,'Database Manager');
+```sql
+INSERT INTO cargo (id_cargo,descricao)
+VALUES (1,'Analista de Sistemas'),
+	   (2,'Database Manager');
+```
 
 ### **1.2 Update**
  Um update básico seria:
->UPDATE [***nome da tabela***] \
-	  SET [***nome coluna***] = [***um valor***] \
-	  WHERE [***condição***]
+```sql
+UPDATE <nome da tablea> 
+SET <nome coluna> = <um valor> 
+WHERE <condição>
+```
 
 Exemplo:
-> UPDATE cargo \
-	      SET descricao ='Programador'\
- 	      WHERE id_cargo = 3;
+```sql
+UPDATE cargo 
+SET descricao ='Programador'
+WHERE id_cargo = 3;
+```
 
 ###  **1.3 Delete**
 Um delete básico seria:
->DELETE {*FROM*} [***nome da tabela***]\
-           {*WHERE* [***condicao***]}
+```sql
+DELETE [FROM] <nome da tabela>
+[WHERE <condicao>]
+```
 
 Exemplo:
-> DELETE FROM cargo \
-	       WHERE id_cargo = 2; 
+```sql
+DELETE FROM cargo 
+WHERE id_cargo = 2; 
+```
 
 ** *obs: **deleta apenas o dado condicionado***
 Podemos tambem utilizar:
->DELETE cargo;
+```sql
+DELETE cargo;
+```
 
 ** *obs: **irá deletar os dados da tabela toda, mas a tabela ainda existe :>***
 
