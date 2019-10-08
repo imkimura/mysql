@@ -3,7 +3,7 @@
 # Tutorial de Comandos MySQL
 
 Primeiro de tudo temos o SQL é dividido em 5 partes:
-- [DDL (**Data Definition Language** - Linguagem de Definição de Dados)](#1-data-definition-language)  São os comandos que interagem com os objetos do banco.
+- [DDL (**Data Definition Language** - Linguagem de Definição de Dados)](#1-data-definition-language-ddl)  São os comandos que interagem com os objetos do banco.
 >-- São comandos: > CREATE, ALTER e DROP <
 - [DML (**Data Manipulation Language** - Linguagem de Manipulação de Dados)](#2-data-manipulation-language-dml)  São os comandos que interagem com os dados dentro das tabelas.
 >-- São comandos: > INSERT, DELETE e UPDATE <
@@ -54,7 +54,7 @@ CONSTRAINT pk_pessoa_id_pessoa
 PRIMARY KEY (id_pessoa)
 );
 ```
-Eu posso criar outros tipos de ***CONSTRAINT*** como por exemplo as de unique, foreign key e check. Para criar uma constraint de FK a estrutura é um pouco diferente:
+Eu posso criar outros tipos de ***CONSTRAINT*** como por exemplo as de UNIQUE, FOREIGN KEY e CHECK. Para criar uma constraint de FK a estrutura é um pouco diferente:
 
 ```sql
 CONSTRAINT fk_<nomeDaTabela>_<nomeDaTabelaEstrangeira>_<nomeDoCampo>
@@ -77,6 +77,92 @@ FOREIGN KEY id_cachorro
 REFERENCES animal(id)
 
 );
+```
+As estruturas das CONSTRAINT's de CHECK e UNIQUE são;
+\
+\
+Exemplo de UNIQUE:
+```sql
+CONSTRAINT uk_<nome da tabela>_<nome do campo>
+UNIQUE c
+```
+
+```sql
+CONSTRAINT uk_pessoa_cpf
+UNIQUE (cpf)
+```
+\
+Exemplo de CHECK:
+```sql
+CONSTRAINT ck_<nome da tabela>_<nome do campo>
+CHECK <condicao>
+```
+Aqui no exemplo abaixo ele esta verificando se o campo idade é maior que 18
+```sql
+CONSTRAINT ck_pessoa_idade
+CHECK (idade > 18)
+```
+### 1.2 Alter Table
+Faz modificações em objetos criados com o CREATE, como inserir ou remover uma nova coluna em uma tabela, alterar o tipo das colunas, etc. 
+
+#### 1.2.1 Para Criar uma Nova Coluna
+```sql
+ALTER TABLE <nome_da_tabela> 
+ADD COLUMN <nome do campo>  <tipo do campo>
+```
+```sql
+ALTER TABLE funcionario 
+ADD COLUMN cod_departamento TINYINT
+```
+#### 1.2.2 Para Excluir uma Coluna
+```sql
+ALTER TABLE <nome_da_tabela> 
+DROP COLUMN <nome do campo>
+```
+```sql
+ALTER TABLE funcionario 
+DROP COLUMN cod_departamento
+```
+#### 1.2.3 Para Inserir uma Constraint
+
+```sql
+ALTER TABLE <nome tabela> 
+ADD CONSTRAINT fk_<nomeDaTabela>_<nomeDaTabelaEstrangeira>_<nomeDoCampo> 
+FOREIGN KEY <nomeDoCamponaTabela>
+REFERENCES <nomeDaTabelaEstrangeira>(<nomeDoCampoNaTabelaEstrangeira>)
+```
+```sql
+ALTER TABLE funcionario 
+ADD CONSTRAINT fk_funcionario_departamento 
+FOREIGN KEY(cod_departamento) 
+REFERENCES departamento(cod_departamento)
+```
+#### 1.2.4 Para Excluir uma Constraint
+```sql
+ALTER TABLE <nomeDaTabela>
+DROP FOREIGN KEY <nomeDaFK>
+```
+```sql
+ALTER TABLE funcionario 
+DROP FOREIGN KEY fk_funcionario_departamento
+```
+#### 1.2.5 Alterar nome da Tabela
+```sql
+ALTER TABLE <nomeDaTabela>
+RENAME <novoNome>
+```
+```sql
+ALTER TABLE funcionario 
+RENAME funcionario_v2
+```
+#### 1.2.6 Alterar nome da Coluna
+```sql
+ALTER TABLE <nomeDaTabela>
+RENAME COLUMN <nomeDoCampo> to <novoNome>
+```
+```sql
+ALTER TABLE funcionario 
+RENAME COLUMN nome to nm_funcionario
 ```
 
 ## 2. Data Manipulation Language (DML)
