@@ -347,18 +347,21 @@ Um exemplo seria temos uma tabela de cachorro_dono, uma de cachorro e uma de don
 \
 \
 **Tabela Cachorro_Dono**
+
 |id|id_pet|id_dono|
 |--|------|-------|
 |1 |1     |3      |
 
 
 **Tabela Cachorro**
+
 |id_cachorro|nome|
 |-----------|----|
 |1          |Han |
 
 
 **Tabela Dono**
+
 |id_dono|nome          |
 |-------|--------------|
 |3      |Luke Skywalker|
