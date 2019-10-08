@@ -19,11 +19,11 @@ Primeiro de tudo temos o SQL é dividido em 5 partes:
 ### **1.1 Insert**
 Um insert básico seria:
 
->INSERT INTO [***nome da tabela***]  ([***colunas da tabela***])
+>INSERT INTO [***nome da tabela***] &nbsp;  ([***colunas da tabela***]) \
 >VALUES ([***valores da tabela***])
 
 Exemplo:
->INSERT INTO cargo (id_cargo,descricao)
+>INSERT INTO cargo &nbsp; (id_cargo,descricao)
 	    VALUES (1,'Analista de Sistemas'),
 		               (2,'Database Manager');
 
@@ -52,4 +52,3 @@ Podemos tambem utilizar:
 >DELETE cargo;
 
 ** *obs: **irá deletar os dados da tabela toda, mas a tabela ainda existe :>***
-
