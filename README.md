@@ -23,28 +23,28 @@ Um insert básico seria:
 >VALUES ([***valores da tabela***])
 
 Exemplo:
->INSERT INTO cargo &nbsp; (id_cargo,descricao)
-	    VALUES (1,'Analista de Sistemas'),
-		               (2,'Database Manager');
+>INSERT INTO cargo &nbsp; (id_cargo,descricao) \
+	    VALUES (1,'Analista de Sistemas'), \
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       (2,'Database Manager');
 
 ### **1.2 Update**
  Um update básico seria:
->UPDATE [***nome da tabela***] 
-	  SET [***nome coluna***] = [***um valor***] 
+>UPDATE [***nome da tabela***] \
+	  SET [***nome coluna***] = [***um valor***] \
 	  WHERE [***condição***]
 
 Exemplo:
-> UPDATE cargo 
-	      SET descricao ='Programador'
+> UPDATE cargo \
+	      SET descricao ='Programador'\
  	      WHERE id_cargo = 3;
 
 ###  **1.3 Delete**
 Um delete básico seria:
->DELETE {FROM} [***nome da tabela***]
-           {WHERE [***condicao***]}
+>DELETE {*FROM*} [***nome da tabela***]\
+           {*WHERE* [***condicao***]}
 
 Exemplo:
-> DELETE FROM cargo 
+> DELETE FROM cargo \
 	       WHERE id_cargo = 2; 
 
 ** *obs: **deleta apenas o dado condicionado***
@@ -52,3 +52,4 @@ Podemos tambem utilizar:
 >DELETE cargo;
 
 ** *obs: **irá deletar os dados da tabela toda, mas a tabela ainda existe :>***
+
