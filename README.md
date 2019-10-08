@@ -1,20 +1,85 @@
 
+
 # Tutorial de Comandos MySQL
 
 Primeiro de tudo temos o SQL é dividido em 5 partes:
-
-- [DML (**Data Manipulation Language** - Linguagem de Manipulação de Dados)](#1-data-manipulation-language-dml)  São os comandos que interagem com os dados dentro das tabelas.
->-- São comandos: > INSERT, DELETE e UPDATE <
-- [DQL (**Data Query Language** - Linguagem de Consulta de dados)](#2-data-query-language) São os comandos de consulta
->-- São comandos: > SELECT (comando de consulta)
-- DDL (**Data Definition Language** - Linguagem de Definição de Dados)  São os comandos que interagem com os objetos do banco.
+- [DDL (**Data Definition Language** - Linguagem de Definição de Dados)](#1-data-definition-language)  São os comandos que interagem com os objetos do banco.
 >-- São comandos: > CREATE, ALTER e DROP <
+- [DML (**Data Manipulation Language** - Linguagem de Manipulação de Dados)](#2-data-manipulation-language-dml)  São os comandos que interagem com os dados dentro das tabelas.
+>-- São comandos: > INSERT, DELETE e UPDATE <
+- [DQL (**Data Query Language** - Linguagem de Consulta de dados)](#3-data-query-language) São os comandos de consulta
+>-- São comandos: > SELECT (comando de consulta)
 - DCL (**Data Control Language** - Linguagem de Controle de Dados) São os comandos para controlar a parte de segurança do banco de dados
 >-- São comandos: > GRANT, REVOKE E DENY <
 - DTL (**Data Transaction Language** - Linguagem de Transação de Dados) São os comandos para controle de transação
 >-- São comandos: > BEGIN TRANSACTION, COMMIT E ROLLBACK <
 
-## 1. Data Manipulation Language (DML)
+## 1. Data Definition Language (DDL)
+Uma linguagem de definição de dados permite que possamos Criar, Alterar e Deletar estruturas de dados, ou seja, os comandos **CREATE**, **ALTER** e **DROP**.
+### 1.1 Create
+Como o nome já diz ele tem a função de criar, no caso podemos utilizá-lo para criar esquemas e tabelas. Para criar e utilizar um banco de dados utilizamos:
+```sql
+CREATE DATABASE <nome do banco>;
+USE <nome do banco>;
+```
+Já a tabela é um pouco diferente pois precisamos especificar os campos que irão compor esta tabela, como no exemplo abaixo:
+```sql
+CREATE TABLE <nome da tabela> (
+<nome do campo> <tipo do campo> <null ou not null>
+);
+```
+```sql
+CREATE TABLE pessoa ( 
+id_pessoa TINYINT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(55) NOT NULL,
+sobrenome VARCHAR(65) NOT NULL,
+cpf INT(15) NOT NULL
+);
+```
+Note que no último exemplo foi criado um campo chamado "id_pessoa", este campo é quem irá ser a chave primária da tabela pois ele é único, para que isso possa facilitar nas consultas e para que não hajam pessoas repetidas na tabela. No entanto para que meu id vire minha chave primária, eu preciso declara-lo como minha chave antes portanto eu preciso de uma **CONSTRAINT**, que nada mais é que uma restrição. 
+\
+Para definir uma **CONSTRAINT** de chave primária eu preciso de duas coisas, um nome para ela e o campo ta tabela que estou  referenciando no caso ficaria mais ou menos assim:
+```sql
+CONSTRAINT pk_<nome da tabela>_<nome do campo>
+PRIMARY KEY (<nome do campo na tabela>)
+```
+```sql
+CREATE TABLE pessoa ( 
+id_pessoa TINYINT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(55) NOT NULL,
+sobrenome VARCHAR(65) NOT NULL,
+cpf INT(15) NOT NULL,
+
+CONSTRAINT pk_pessoa_id_pessoa
+PRIMARY KEY (id_pessoa)
+);
+```
+Eu posso criar outros tipos de ***CONSTRAINT*** como por exemplo as de unique, foreign key e check. Para criar uma constraint de FK a estrutura é um pouco diferente:
+
+```sql
+CONSTRAINT fk_<nomeDaTabela>_<nomeDaTabelaEstrangeira>_<nomeDoCampo>
+FOREIGN KEY <nomeDoCamponaTabela>
+REFERENCES <nomeDaTabelaEstrangeira>(<nomeDoCampoNaTabelaEstrangeira>)
+```
+```sql
+CREATE TABLE pessoa ( 
+id_pessoa TINYINT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(55) NOT NULL,
+sobrenome VARCHAR(65) NOT NULL,
+cpf INT(15) NOT NULL,
+id_cachorro TINYINT NOT NULL,
+
+CONSTRAINT pk_pessoa_id_pessoa
+PRIMARY KEY (id_pessoa),
+
+CONSTRAINT fk_pessoa_animal_id_cachorro
+FOREIGN KEY id_cachorro
+REFERENCES animal(id)
+
+);
+```
+
+## 2. Data Manipulation Language (DML)
 
 ### **1.1 Insert**
 Um insert básico seria:
@@ -67,7 +132,7 @@ DELETE cargo;
 ** *obs: **irá deletar os dados da tabela toda, mas a tabela ainda existe :>***
 
 
-## 2. Data Query Language
+## 3. Data Query Language
 Como o nome diz essa parte serve para fazer consultas nas tabelas
 para isso utilizamos o "Select"
 
