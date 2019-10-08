@@ -1,5 +1,5 @@
 
-# Bem Vindo a um Tutorial de Comandos MySQL
+# Tutorial de Comandos MySQL
 
 Primeiro de tudo temos o SQL é dividido em 5 partes:
 
@@ -27,7 +27,7 @@ Exemplo:
 ```sql
 INSERT INTO cargo (id_cargo,descricao)
 VALUES (1,'Analista de Sistemas'),
-	   (2,'Database Manager');
+       (2,'Database Manager');
 ```
 
 ### **1.2 Update**
