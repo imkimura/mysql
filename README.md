@@ -326,4 +326,5 @@ HAVING AVG(salario) > 2000;
 ##  Conclusões
 Este tutorial é com total intuito de aprender e quem sabe ajudar alguém, por hoje é só caros padawans, e que a força esteja ao seu lado
 \
+\
 ![enter image description here](http://giphygifs.s3.amazonaws.com/media/jd6TVgsph6w7e/giphy.gif)
