@@ -350,19 +350,19 @@ Um exemplo seria temos uma tabela de cachorro_dono, uma de cachorro e uma de don
 |id|id_pet|id_dono|
 |--|------|-------|
 |1 |1     |3      |
-\
-\
+
+
 **Tabela Cachorro**
 |id_cachorro|nome|
 |-----------|----|
 |1          |Han |
-\
-\
+
+
 **Tabela Dono**
 |id_dono|nome          |
 |-------|--------------|
 |3      |Luke Skywalker|
-\
+
 \
 Para podermos então pegar o nome do dono e do pet teremos que juntar as tabelas, para fazer isso utilizamos:
 
@@ -374,9 +374,11 @@ INNER JOIN dono as d
 ON d.id_dono = cd.id_dono
 ```
 Nos retornando os valores:
+
 |Dono          |Pet |
 |--------------|----|
 |Luke Skywalker|Totó|
+
 
 ##  Conclusões
 Este tutorial é com total intuito de aprender e quem sabe ajudar alguém, por hoje é só caros padawans, e que a força esteja ao seu lado
