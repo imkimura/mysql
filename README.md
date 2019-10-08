@@ -5,7 +5,7 @@ Primeiro de tudo temos o SQL é dividido em 5 partes:
 
 - [DML (**Data Manipulation Language** - Linguagem de Manipulação de Dados)](#1-data-manipulation-language-dml)  São os comandos que interagem com os dados dentro das tabelas.
 >-- São comandos: > INSERT, DELETE e UPDATE <
-- DQL (**Data Query Language** - Linguagem de Consulta de dados) São os comandos de consulta
+- [DQL (**Data Query Language** - Linguagem de Consulta de dados)](#2-data-query-language) São os comandos de consulta
 >-- São comandos: > SELECT (comando de consulta)
 - DDL (**Data Definition Language** - Linguagem de Definição de Dados)  São os comandos que interagem com os objetos do banco.
 >-- São comandos: > CREATE, ALTER e DROP <
