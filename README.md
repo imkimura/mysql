@@ -95,6 +95,7 @@ SELECT * FROM alunos ORDER BY id_aluno DESC;
 ```
 *obs. **onde ele seleciona os alunos pelo id de forma descendente.*** 
 \
+\
 O **WHERE** é muito utilizado para dar condições específicas ao **SELECT** que estamos fazendo no banco como por exemplo:
 ```sql
 SELECT nome, carga_horaria FROM curso
@@ -102,12 +103,14 @@ WHERE nm_curso LIKE 'Ora%';
 ```
 *obs. **onde eu seleciono cursos que tenham "Ora" no inicio do nome***
 \
+\
 Eu também posso dar condições onde tal campo seja `null` e o campo seja igual a certos valores 
 ```sql
 SELECT nome, CH FROM curso
 WHERE CH IS NULL;
 ```
 *obs. **Aqui temos um exemplo de select onde eu quero que a carga horaria seja nula***
+\
 ```sql
 SELECT nome, CH FROM CURSO
 WHERE CH IN (24,32); 
@@ -159,6 +162,7 @@ ORDER BY MAX(salario) DESC;
 \
 \
 Terminando a parte de SELECTs com funções vale destacar que para SELECT's onde exista agrupamento(**GROUP BY**) utilizamos o **HAVING** ao inves de **WHERE**
+\
 \
 Exemplo:
 ```sql
