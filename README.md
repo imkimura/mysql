@@ -360,6 +360,7 @@ Um exemplo seria temos uma tabela de cachorro_dono, uma de cachorro e uma de don
 |id_cachorro|nome|
 |-----------|----|
 |1          |Han |
+|2          |Totó|
 
 
 **Tabela Dono**
@@ -367,6 +368,8 @@ Um exemplo seria temos uma tabela de cachorro_dono, uma de cachorro e uma de don
 |id_dono|nome          |
 |-------|--------------|
 |3      |Luke Skywalker|
+|4      |Leia Organa   |
+
 
 \
 Para podermos então pegar o nome do dono e do pet teremos que juntar as tabelas, para fazer isso utilizamos:
@@ -383,6 +386,9 @@ Nos retornando os valores:
 |Dono          |Pet |
 |--------------|----|
 |Luke Skywalker|Han |
+
+\
+Repare que mesmo tendo mais valores nas tabelas "Dono" e "Cachorro" ele apenas retorna Luke e o pet Han, isso é porque o INNER apenas pega os valores em comum.
 
 #### 3.1.3 LEFT JOIN
 \
@@ -429,7 +435,56 @@ Assim eu consigo listar todas pessoas mesmo não tendo uma cidade:
 | |Anakin |Tatooine |
 | |Jabba  |NULL     |
 
+\
+#### 3.1.4 RIGHT JOIN
+\
+O RIGHT JOIN é bem parecido com o anterior, tendo apenas uma pequena diferença, ao invés de pegar todos valores da tabela A, ele pegará todos valores da tabela B, uma estrutura de um RIGHT JOIN é mais ou menos assim:
 
+```sql
+SELECT <campos [a || b]> FROM <tabela a>
+RIGHT JOIN <tabela b>
+ON <condição de comparação a && b>;
+```
+
+Agora vamos a um exemplo utilizando o mesmo caso anterior, porém agora ao invés de listar as pessoas, quero listar todos planetas, com algumas modificações nas tabelas:
+\
+\
+**Tabela Pessoa**
+
+|id_pessoa |nome      |id_planeta(FK)|
+|----------|----------|--------------|
+|1         |Léia      |2             |
+|2         |Anakin    |1             |
+|3         |Jabba     |NULL          |
+|4         |Han Solo  |NULL          |
+
+**Tabela Planeta**
+
+|id_planeta|nome     |
+|----------|---------|
+|1         |Tatooine |
+|2         |Alderaan |
+|3         |Bespin   |
+|4         |Coruscant|
+
+\
+Para então podermos listar TODOS planetas precisamos:
+
+```sql
+SELECT p.nome as Pessoa, pl.nome as Planeta FROM pessoa p
+RIGHT JOIN planeta pl
+ON pl.id_planeta = p.id_planeta;
+```
+Assim eu consigo listar todos planetas mesmo que eles não tenham pessoas:
+
+| |Pessoa |Planeta  |
+|-|-------|---------|
+| |Léia   |Alderaan |
+| |Anakin |Tatooine |
+| |NULL   |Bespin   |
+| |NULL   |Coruscant|
+
+\
 ##  Conclusões
 Este tutorial é com total intuito de aprender e quem sabe ajudar alguém, por hoje é só caros padawans, e que a força esteja ao seu lado
 \
