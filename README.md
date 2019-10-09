@@ -386,7 +386,16 @@ Nos retornando os valores:
 
 #### 3.1.3 LEFT JOIN
 \
-Diferente do **INNER JOIN**, o LEFT JOIN tem o objetivo de pegar os valores em comum entre duas tabelas, no entanto priorizando a tabela **a**, ou seja, ele irá retornar TODOS valores de A, mesmo que eles não sejam comum com B. Vamos ao exemplo, digamos que eu tenha uma tabela Pessoa e uma de cidade, e eu quero listar **TODAS** pessoas:
+Diferente do **INNER JOIN**, o LEFT JOIN tem o objetivo de pegar os valores em comum entre duas tabelas, no entanto priorizando a tabela **a**, ou seja, ele irá retornar TODOS valores de A, mesmo que eles não sejam comum com B. Logo abaixo temos a estrutura de um LEFT JOIN:
+
+```sql
+SELECT <campos [a || b]> FROM <tabela a>
+LEFT JOIN <tabela b>
+ON <condição de comparação a && b>;
+```
+
+
+Vamos ao exemplo, digamos que eu tenha uma tabela Pessoa e uma de cidade, e eu quero listar **TODAS** pessoas:
 \
 \
 **Tabela Pessoa**
