@@ -37,9 +37,10 @@ sobrenome VARCHAR(65) NOT NULL,
 cpf INT(15) NOT NULL
 );
 ```
-Note que no último exemplo foi criado um campo chamado "id_pessoa", este campo é quem irá ser a chave primária da tabela pois ele é único, para que isso possa facilitar nas consultas e para que não hajam pessoas repetidas na tabela. No entanto para que meu id vire minha chave primária, eu preciso declara-lo como minha chave antes portanto eu preciso de uma **CONSTRAINT**, que nada mais é que uma restrição. 
+&nbsp;&nbsp;Note que no último exemplo foi criado um campo chamado "id_pessoa", este campo é quem irá ser a chave primária da tabela pois ele é único, para que isso possa facilitar nas consultas e para que não hajam pessoas repetidas na tabela. No entanto para que meu id vire minha chave primária, eu preciso declara-lo como minha chave antes portanto eu preciso de uma **CONSTRAINT**, que nada mais é que uma restrição. 
 \
-Para definir uma **CONSTRAINT** de chave primária eu preciso de duas coisas, um nome para ela e o campo ta tabela que estou  referenciando no caso ficaria mais ou menos assim:
+\
+&nbsp;&nbsp;Para definir uma **CONSTRAINT** de chave primária eu preciso de duas coisas, um nome para ela e o campo ta tabela que estou  referenciando no caso ficaria mais ou menos assim:
 ```sql
 CONSTRAINT pk_<nome da tabela>_<nome do campo>
 PRIMARY KEY (<nome do campo na tabela>)
@@ -85,7 +86,7 @@ As estruturas das CONSTRAINT's de CHECK e UNIQUE são;
 Exemplo de UNIQUE:
 ```sql
 CONSTRAINT uk_<nome da tabela>_<nome do campo>
-UNIQUE c
+UNIQUE <condicao>
 ```
 
 ```sql
@@ -211,6 +212,8 @@ WHERE id_cargo = 2;
 ```
 
 ** *obs: **deleta apenas o dado condicionado***
+\
+\
 Podemos tambem utilizar:
 ```sql
 DELETE cargo;
@@ -228,7 +231,7 @@ Um select básico é :
 ```sql
 SELECT * FROM <nome tabela>; 
 ```
-Onde eu seleciono tudo de uma determinada tabela, no entanto podemos também selecionar campos específicos
+Onde eu seleciono tudo de uma determinada tabela, no entanto podemos também selecionar campos específicos como:
 ```sql
 SELECT nome, idade, sexo FROM pessoa;
 ```
@@ -435,7 +438,7 @@ Assim eu consigo listar todas pessoas mesmo não tendo uma cidade:
 | |Anakin |Tatooine |
 | |Jabba  |NULL     |
 
-\
+
 #### 3.1.4 RIGHT JOIN
 \
 O RIGHT JOIN é bem parecido com o anterior, tendo apenas uma pequena diferença, ao invés de pegar todos valores da tabela A, ele pegará todos valores da tabela B, uma estrutura de um RIGHT JOIN é mais ou menos assim:
@@ -484,7 +487,7 @@ Assim eu consigo listar todos planetas mesmo que eles não tenham pessoas:
 | |NULL   |Bespin   |
 | |NULL   |Coruscant|
 
-\
+
 ##  Conclusões
 Este tutorial é com total intuito de aprender e quem sabe ajudar alguém, por hoje é só caros padawans, e que a força esteja ao seu lado
 \
