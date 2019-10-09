@@ -326,16 +326,18 @@ HAVING AVG(salario) > 2000;
 *obs. **Aqui eu estou fazendo um select que me retorne o departamento e sua media salarial onde a media seja maior que 2000***
 
 ####  3.1.1 JOINS
+\
 ![enter image description here](https://pics.me.me/thumb_left-join-rightjoin-inner-join-fulouter-join-ingfsp-com-database-60216420.png)
 \
 \
-Uma breve introdução a Join's, a própria palavra nós da breve noção do que essas funções são responsáveis, Join significa "Juntar-se", no caso de banco de dados o Join serve para nada mais que juntar tabelas através de  certas condições. Abaixo está uma imagem que representaria melhor.
+Uma breve introdução a Join's, a própria palavra nos da uma breve noção do que essas funções são responsáveis, Join significa "Juntar-se", no caso de banco de dados o Join serve para nada mais que juntar tabelas através de  certas condições. Abaixo está uma imagem que representaria melhor.
 \
 \
 ![enter image description here](https://static.imasters.com.br/wp-content/uploads/2013/05/uuu.png)
 
 
 #### 3.1.2 INNER JOIN
+\
 O **INNER JOIN** serve para juntar duas tabelas e mostrar seus valores em comum, ou seja, ele faz uma intersecção de duas tabelas. Para fazermos um INNER JOIN precisamos do nome da tabela que queremos pegar os dados comuns e o campo que irá fazer a interligação entre as tabelas.
 
 ```sql 
@@ -380,7 +382,43 @@ Nos retornando os valores:
 
 |Dono          |Pet |
 |--------------|----|
-|Luke Skywalker|Totó|
+|Luke Skywalker|Han |
+
+#### 3.1.3 LEFT JOIN
+\
+Diferente do **INNER JOIN**, o LEFT JOIN tem o objetivo de pegar os valores em comum entre duas tabelas, no entanto priorizando a tabela **a**, ou seja, ele irá retornar TODOS valores de A, mesmo que eles não sejam comum com B. Vamos ao exemplo, digamos que eu tenha uma tabela Pessoa e uma de cidade, e eu quero listar **TODAS** pessoas:
+\
+\
+**Tabela Pessoa**
+
+|id_pessoa |nome   |id_cidade (FK)|
+|----------|-------|--------------|
+|1         |Léia   |2             |
+|2         |Anakin |1             |
+|3         |Jabba  |NULL          |
+
+**Tabela Cidade**
+
+|id_cidade |nome    |
+|----------|--------|
+|1         |Tatooine|
+|2         |Alderaan|
+
+\
+Para então podermos listar TODAS pessoas precisamos:
+
+```sql
+SELECT p.nome as Pessoa, c.nome as Cidade FROM pessoa p
+LEFT JOIN cidade c
+ON c.id_cidade = p.id_cidade;
+```
+Assim eu consigo listar todas pessoas mesmo não tendo uma cidade:
+
+| |Pessoa |Cidade   |
+|-|-------|---------|
+| |Léia   |Alderaan |
+| |Anakin |Tatooine |
+| |Jabba  |NULL     |
 
 
 ##  Conclusões
